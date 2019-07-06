@@ -1,4 +1,5 @@
 from functools import wraps
+import os
 import json
 import requests
 from flask import request
@@ -12,7 +13,7 @@ class UserService:
     def get_user(self):
         authorization = request.headers.get('Authorization')
         headers = {'Authorization': authorization}
-        url = 'http://localhost:5000/user_by_token'
+        url = '{}/user_by_token'.format(os.getenv('USERS_SERVICE_URL'))
         response = requests.get(url, headers=headers)
 
         if response.status_code == 200:
