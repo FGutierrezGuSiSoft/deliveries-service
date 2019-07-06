@@ -1,0 +1,11 @@
+version: '3.6'
+
+services:
+  deliveries:
+    container_name: deliveries
+    build: .
+    ports:
+      - 5001:5000
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=main.py
